@@ -56,11 +56,11 @@ class RefreshTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let difference = largeTitle.frame.maxY - maxYLargetitle
-        if let parent = self.parent as? ViewController
-        {
-            parent.topConstraint.constant = difference
-
-        }
+//        if let parent = self.parent as? ViewController
+//        {
+//            parent.topConstraint.constant = difference
+//
+//        }
     }
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
        // let actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
