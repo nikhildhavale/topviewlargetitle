@@ -55,18 +55,21 @@ class RefreshTableViewController: UITableViewController {
     }
     // MARK: - Table view data source
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        let difference = largeTitle.frame.maxY - maxYLargetitle
-//        if let parent = self.parent as? ViewController
-//        {
-//            parent.topConstraint.constant = difference
-//
-//        }
+        if let parent = self.parent as? ViewController
+        {
+            parent.topView.isHidden = true
+            parent.heightConstraint.constant = 0
+            //parent.topConstraint.constant = difference
+
+        }
     }
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
        // let actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
         if let parent = self.parent as? ViewController
         {
-            parent.topConstraint.constant = 0
+            parent.topView.isHidden = false
+            parent.heightConstraint.constant = 30
+
 
         }
         //print("will end dragging \(actualPosition.y)")
@@ -82,6 +85,7 @@ class RefreshTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         cell.textLabel?.text = "\(indexPath.row)"
+        cell.backgroundColor = .gray
         // Configure the cell...
 
         return cell

@@ -255,20 +255,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbf-u5-pcs">
                                 <rect key="frame" x="0.0" y="170" width="414" height="692"/>
                                 <connections>
                                     <segue destination="Gsr-HK-5Ka" kind="embed" id="sXo-2W-7ei"/>
                                 </connections>
                             </containerView>
-<view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ak-rC-0Ks">
-    <rect key="frame" x="0.0" y="140" width="414" height="30"/>
-    <color key="backgroundColor" systemColor="systemOrangeColor"/>
-    <constraints>
-        <constraint firstAttribute="height" constant="30" id="8Ye-oF-y05"/>
-    </constraints>
-</view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ak-rC-0Ks">
+                                <rect key="frame" x="0.0" y="140" width="414" height="30"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8Ye-oF-y05"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="be3-rI-f1e"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -282,9 +281,11 @@
                             <constraint firstItem="wbf-u5-pcs" firstAttribute="leading" secondItem="be3-rI-f1e" secondAttribute="leading" id="qrH-ob-MBE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Test title" id="rmb-NC-u8N"/>
+                    <navigationItem key="navigationItem" title="Test title" largeTitleDisplayMode="always" id="rmb-NC-u8N"/>
                     <connections>
+                        <outlet property="heightConstraint" destination="8Ye-oF-y05" id="zCe-rz-7uN"/>
                         <outlet property="topConstraint" destination="8EB-26-Eyw" id="Now-Sd-5GD"/>
+                        <outlet property="topView" destination="4Ak-rC-0Ks" id="83G-5j-F7R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mo-Za-F9E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
