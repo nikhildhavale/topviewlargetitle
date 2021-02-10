@@ -13,6 +13,7 @@ class RefreshTableViewController: UITableViewController {
     let refreshControlC = UIRefreshControl()
     var previousOffset = CGFloat(0)
     var currentHeight = CGFloat(30)
+    var allowRubberBanding = true
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,8 +23,16 @@ class RefreshTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        if allowRubberBanding
+        {
+            self.tableView.refreshControl = refreshControlC
+            
+        }
+        else{
+            self.tableView.addSubview(refreshControlC)
+        }
         refreshControlC.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.tableView.addSubview(refreshControlC)
+        
         let rightBarbuttonItem1 = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(rightBarbuttonClicked))
         let rightBarbuttonItem2 = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(rightBarbuttonClicked))
         let navButton = UINavigationItem()
@@ -59,23 +68,23 @@ class RefreshTableViewController: UITableViewController {
     }
     // MARK: - Table view data source
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        if let parent = self.parent as? ViewController
-//        {
-//            parent.topView.isHidden = true
-//            parent.heightConstraint.constant = 0
-//            //parent.topConstraint.constant = difference
-//
-//        }
+        if let parent = self.parent as? ViewController , allowRubberBanding
+        {
+            parent.topView.isHidden = true
+            parent.heightConstraint.constant = 0
+            //parent.topConstraint.constant = difference
+
+        }
     }
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-       // let actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-//        if let parent = self.parent as? ViewController
-//        {
-//            parent.topView.isHidden = false
-//            parent.heightConstraint.constant = 30
-//
-//
-//        }
+
+        if let parent = self.parent as? ViewController , allowRubberBanding
+        {
+            parent.topView.isHidden = false
+            parent.heightConstraint.constant = 30
+
+
+        }
 //        //print("will end dragging \(actualPosition.y)")
 
     }

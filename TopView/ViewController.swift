@@ -17,7 +17,16 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
       //  self.view.sendSubviewToBack(topView)
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let tableController = self.children.first as? RefreshTableViewController
+        {
+            if tableController.allowRubberBanding
+            {
+                self.view.bringSubviewToFront(topView)
+            }
+        }
+    }
 
 }
 
